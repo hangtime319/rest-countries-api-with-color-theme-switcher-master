@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* LIGHT MODE COLORS(DEFAULT) */
+:root {
+  
+  --light-text: hsl(200, 15%, 8%);
+  --light-input: hsl(0, 0%, 50%);
+  --light-bg: hsl(0, 0%, 99%);
+  --elements: hsl(0, 0%, 100%);
+  font-family: "Nunito Sans", sans-serif;
+}
+
+/* DARK MODE COLORS */
+.dark {
+  --elements: hsl(209, 23%, 22%);
+  --light-bg: hsl(207, 26%, 17%);
+  --light-text: hsl(0,0%,100%);
+  --light-input: hsl(0, 0%, 100%);
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  background-color: var(--light-bg);
+  color: var(--light-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
