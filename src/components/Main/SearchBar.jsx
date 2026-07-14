@@ -1,4 +1,3 @@
-import React from "react";
 import InputSearch from "./InputSearch";
 import FilterRegion from "./FilterRegion";
 

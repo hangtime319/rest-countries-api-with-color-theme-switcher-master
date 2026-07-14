@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import ListCountries from "../Countries/ListCountries";
 import SearchBar from "./SearchBar";
-import DetailsCountry from "../Countries/DetailsCountry";
+
+const LazyDetailsCountry = lazy(() => import("../Countries/DetailsCountry"));
 
 const MainCountries = ({ countries }) => {
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -27,7 +28,14 @@ const MainCountries = ({ countries }) => {
           }
         />
 
-        <Route path="/country/:id" element={<DetailsCountry countries={countries} />} />
+        <Route
+          path="/country/:id"
+          element={
+            <Suspense fallback={<p className="mt-8 px-12 text-base">Loading country...</p>}>
+              <LazyDetailsCountry countries={countries} />
+            </Suspense>
+          }
+        />
       </Routes>
     </main>
   );

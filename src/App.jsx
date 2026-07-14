@@ -1,16 +1,19 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { HashRouter } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
-import MainCountries from "./components/Main/MainCountries";
 import data from "./data/data.json";
+
+const MainCountries = lazy(() => import("./components/Main/MainCountries"));
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
-      <MainCountries countries={data} />
-    </BrowserRouter>
+      <Suspense fallback={<p className="mt-8 px-4 text-center">Loading countries...</p>}>
+        <MainCountries countries={data} />
+      </Suspense>
+    </HashRouter>
   );
 };
 
